@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Malco Stores</title>
+<meta name="description" content="Order cleaning supplies, confirm deliveries and take items from the store.">
+<meta name="theme-color" content="#000000">
+<link rel="manifest" href="stores.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/stores-32.png">
+<link rel="apple-touch-icon" href="icons/stores-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Malco Stores">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<script src="config.js"></script>
+<script>
+  // Opened from the home-screen icon: go straight to the app.
+  (function () {
+    var link = (window.MALCO_LINKS || {})['stores'] || '';
+    var fromIcon = window.navigator.standalone === true ||
+      (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) ||
+      /[?&]launch=1/.test(location.search);
+    window.APP_LINK = /^https:\/\//.test(link) ? link : '';
+    window.FROM_ICON = fromIcon;
+    if (fromIcon && window.APP_LINK) location.replace(window.APP_LINK);
+  })();
+</script>
+<style>
+  :root { --green:#95C11F; --blue:#1D71B8; --ink:#16181d; --muted:#5b6270; --line:#e3e6eb; --bg:#f3f5f8; --card:#fff; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif; background:var(--bg); color:var(--ink); line-height:1.45; }
+  header { background:#000; border-bottom:4px solid var(--green); padding:22px 16px; text-align:center; padding-top:max(22px, env(safe-area-inset-top)); }
+  header img { width:84px; height:84px; border-radius:20px; display:block; margin:0 auto 10px; }
+  header h1 { color:#fff; margin:0; font-size:24px; }
+  header p { color:var(--green); margin:4px 0 0; font-size:14px; }
+  main { max-width:560px; margin:0 auto; padding:18px 16px 40px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px; margin-bottom:14px; }
+  .btn { display:block; width:100%; text-align:center; padding:15px; border-radius:10px; border:0; font-size:17px; font-weight:700; text-decoration:none; cursor:pointer; }
+  .open { background:var(--green); color:#111; }
+  .install { background:var(--blue); color:#fff; margin-top:12px; }
+  h2 { font-size:18px; margin:0 0 10px; }
+  ol { margin:0; padding-left:22px; } li { margin:8px 0; }
+  .ico { display:inline-block; vertical-align:-4px; width:20px; height:20px; }
+  .muted { color:var(--muted); font-size:14px; }
+  .tabs { display:flex; gap:8px; margin-bottom:12px; }
+  .tabs button { flex:1; padding:10px; border-radius:8px; border:1px solid var(--line); background:#fff; font-size:15px; font-weight:600; color:var(--muted); cursor:pointer; }
+  .tabs button.on { border-color:var(--blue); color:var(--blue); background:#eef5fc; }
+  .hidden { display:none !important; }
+  .qr { text-align:center; } .qr svg, .qr img { width:220px; height:220px; }
+  .warn { background:#fff6e5; border-color:#f0c36d; }
+  .opening { text-align:center; padding:40px 0; color:var(--muted); }
+  .print { display:none; }
+  @media print {
+    body { background:#fff; } .noprint { display:none !important; } .print { display:block; }
+    .card { border:1px solid #ccc; break-inside:avoid; } main { max-width:none; }
+    header { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <img src="icons/stores-180.png" alt="">
+  <h1>Malco Stores</h1>
+  <p>Malco Services Limited · The Cleaning People</p>
+</header>
+<main>
+  <div id="opening" class="opening hidden">Opening Malco Stores…</div>
+
+  <div id="notset" class="card warn hidden">
+    <h2>Link not set up yet</h2>
+    <p class="muted">The office needs to paste the app link into <b>config.js</b>. See the setup guide.</p>
+  </div>
+
+  <div id="page">
+    <div class="card noprint">
+      <a id="openBtn" class="btn open" href="#">Open Malco Stores</a>
+      <button id="installBtn" class="btn install hidden">Add to my home screen</button>
+    </div>
+
+    <div class="card">
+      <h2>Put Malco Stores on your home screen</h2>
+      <div class="tabs noprint"><button data-t="ios">iPhone</button><button data-t="android">Android</button></div>
+
+      <div data-p="ios">
+        <p class="print"><b>iPhone</b></p>
+        <ol>
+          <li>Open this page in <b>Safari</b> (not Chrome or another app).</li>
+          <li>Tap the <b>Share</b> button
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#1D71B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M8 7l4-4 4 4"/><path d="M5 11v9h14v-9"/></svg>
+            at the bottom of the screen (on iPad, top right).</li>
+          <li>Scroll down and tap <b>Add to Home Screen</b>. If you can't see it, tap <b>Edit Actions</b> first.</li>
+          <li>Tap <b>Add</b>. The Malco icon appears on your home screen.</li>
+        </ol>
+      </div>
+
+      <div data-p="android">
+        <p class="print"><b>Android</b></p>
+        <ol>
+          <li>Open this page in <b>Chrome</b>.</li>
+          <li>Tap the <b>⋮</b> menu at the top right.</li>
+          <li>Tap <b>Add to Home screen</b> or <b>Install app</b>.</li>
+          <li>Tap <b>Add</b> or <b>Install</b>. The Malco icon appears on your home screen.</li>
+        </ol>
+      </div>
+      <p class="muted">From now on, just tap the icon. You sign in with your Staff ID and PIN as usual.</p>
+    </div>
+
+    <div id="qrCard" class="card hidden">
+      <h2>Scan to open on your phone</h2>
+      <div class="qr" id="qr"></div>
+      <p class="muted" style="text-align:center;word-break:break-all" id="pageUrl"></p>
+      <button class="btn install noprint" onclick="window.print()">Print this page for staff</button>
+    </div>
+  </div>
+</main>
+<script src="qrcode.js"></script>
+<script>
+  var $ = function (s) { return document.querySelector(s); };
+  if (FROM_ICON && APP_LINK) { $('#page').classList.add('hidden'); $('#opening').classList.remove('hidden'); }
+  if (!APP_LINK) $('#notset').classList.remove('hidden');
+  $('#openBtn').href = APP_LINK || '#';
+  $('#openBtn').addEventListener('click', function (e) { if (!APP_LINK) { e.preventDefault(); } });
+
+  var ua = navigator.userAgent || '';
+  var isIOS = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  var isAndroid = /Android/.test(ua);
+  function show(t) {
+    document.querySelectorAll('[data-t]').forEach(function (b) { b.classList.toggle('on', b.dataset.t === t); });
+    document.querySelectorAll('[data-p]').forEach(function (p) { p.classList.toggle('hidden', p.dataset.p !== t); });
+  }
+  document.querySelectorAll('[data-t]').forEach(function (b) { b.addEventListener('click', function () { show(b.dataset.t); }); });
+  show(isAndroid ? 'android' : 'ios');
+
+  // Computer: show a QR code staff can scan, and print both sets of steps.
+  if (!isIOS && !isAndroid) {
+    $('#qrCard').classList.remove('hidden');
+    var url = location.href.split('?')[0].split('#')[0];
+    $('#pageUrl').textContent = url;
+    try { var q = qrcode(0, 'M'); q.addData(url); q.make(); $('#qr').innerHTML = q.createSvgTag({ cellSize: 6, margin: 2 }); } catch (e) {}
+    window.addEventListener('beforeprint', function () { document.querySelectorAll('[data-p]').forEach(function (p) { p.classList.remove('hidden'); }); });
+    window.addEventListener('afterprint', function () { show('ios'); });
+  }
+
+  // Android: offer a one-tap install button when Chrome allows it.
+  var deferred;
+  window.addEventListener('beforeinstallprompt', function (e) { e.preventDefault(); deferred = e; $('#installBtn').classList.remove('hidden'); });
+  $('#installBtn').addEventListener('click', function () { if (deferred) { deferred.prompt(); deferred = null; $('#installBtn').classList.add('hidden'); } });
+  if ('serviceWorker' in navigator) { try { navigator.serviceWorker.register('sw.js'); } catch (e) {} }
+</script>
+</body>
+</html>
